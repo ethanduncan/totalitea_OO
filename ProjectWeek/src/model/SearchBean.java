@@ -20,15 +20,17 @@ public class SearchBean implements Serializable {
 
 	public String getItems(String searchText, String searchType){
 		
-		if (searchType.equals("category")) { //if the search type passed in equals category it runs this try/catch
-		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
 															"root", "teatime"); //connects to local server
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("Select * from item where category like \'%" + searchText + "%\'"); //queries category column for anything matching the search text
-			
+			Statement stat = con.createStatement();ResultSet res = null;
+			if (searchType.equals("category")){
+				res = stat.executeQuery("Select * from item where category like \'%" + searchText + "%\'");
+			} //queries category column for anything matching the search text
+			else if (searchType.equals("name")){
+				res = stat.executeQuery("Select * from item where description like \'%" + searchText + "%\'");
+			}
 			while(res.next()){
 				
 				id = res.getString("id");
@@ -81,65 +83,8 @@ public class SearchBean implements Serializable {
 		}
 		catch (SQLException exception){ System.out.println(exception.getMessage());}
 		catch (ClassNotFoundException e){ e.printStackTrace(); } //catches exceptions
-	}
-	else if (searchType.equals("name")) { //if the search type passed in equals name then it runs this try/catch
-		
-		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime"); //connects to the local server
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("Select * from item where description like \'%" + searchText + "%\'"); //queries the description column from the table for text matching the searchText
-			
-			while(res.next()){
-				
-				id = res.getString("id");
-				category = res.getString("category");
-				description = res.getString("description");//sets the variables as the results returned from the query (also overwrites previous values)
-				itemWeight = res.getString("itemWeight");
-				price = res.getString("price");
-				quantityInStock = res.getString("quantityInStock");
-				average = res.getString("average_ratings");
-				
-				items += "<tr>"
-						+ "<form action = 'BasketController' method = 'get'><td>" + description + "</td>"
-						+ "<td>" + category + "</td><td>£" + price + "</td><td>" + quantityInStock 
-								+ "<input type = 'hidden' name = 'basketID' value = '" + id + "'>"
-								+ "<input type = 'hidden' name = 'basketWeight' value = '" + itemWeight + "'>"
-								+ "<input type = 'hidden' name = 'basketDescription' value = '" + description + "'>"
-								+ "<input type = 'hidden' name = 'basketPrice' value = '" + price + "'>"
-						+ "</td>"
-						+ "<td>"
-						+ "<button class='btn btn-success' type ='submit' style='width: 60px; height: 60px; margin-left: 20px;'><i class='fa fa-cart-plus'></i></button>"
-					+ "</td>"
-				+ "</form>"
-						+ "<form action='ControllingServlet' method='GET'>"
-							+ "<td>"
-								+ "<input type='hidden' name='starId' value='" + id + "'>"
-								+ "<input type='hidden' name='page' value='8'>"
-								+ "<select class='form-control' name='star'>"
-									+ "<option class='disabled'>Choose a star rating</option>"
-									+ "<option>1</option>"
-									+ "<option>2</option>"
-									+ "<option>3</option>"
-									+ "<option>4</option>"
-									+ "<option>5</option>"
-								+ "</select>"
-								+ "<button class='btn btn-default' type='submit'>Rate</button>"
-							+ "</td>"
-							+ "<td>" + average + "</td>" 
-						+ "</form>"
-				+ "</tr>";
-
-				//This is the same as the string above the only difference being that this is for a category query.
-			}
-			
-			return items; //returns the item string
-			
-		}
-		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); } //catches exceptions
-	}
+	
 		return "Error";//if searches did not work returns error text
 }
 }
+

@@ -1,3 +1,5 @@
-/model/
 /domain/
+/dto/
+/model/
+/service/
 /servlet/
