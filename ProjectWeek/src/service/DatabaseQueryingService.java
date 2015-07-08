@@ -33,7 +33,6 @@ public class DatabaseQueryingService extends DatabaseConnectorService{
 	@Override
 	public void closeConnection() {
 		try {
-			this.res.close();
 			this.stat.close();
 			this.con.close();
 		} catch (SQLException e) {
