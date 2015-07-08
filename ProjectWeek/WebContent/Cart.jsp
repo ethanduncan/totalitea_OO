@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -66,9 +66,9 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
                 <br /><br />
-                <form action="search.jsp" method="post" style="background-color: rgba(0,0,0,0); display: inline-block; position:absolute; top:20%; left:15%;">
+                <a href="./search.jsp" style="display: inline-block; position:absolute; top:20%; left:15%;">
                 	<button class="btn btn-default" type="submit" style="margin-right: 0px; ">Continue shopping</button>
-                </form>
+                </a>
                 <form action="Order.jsp" method="post" style="background-color: rgba(0,0,0,0); display: inline-block; position: absolute; top: 20%; left: 55%;">
                 	<button class="btn btn-success" id="checkout" type="submit" style="margin-right: 0px;">Confirm and buy</button>
                 </form>

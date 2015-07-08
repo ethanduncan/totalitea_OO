@@ -15,10 +15,10 @@
 	    <link rel="stylesheet" href="./css/styles.css" type="text/css">
 	</head>
 	<body class="content">
-		<% 	bean.addOrderToDatabase(request); 
-			bean.decrementStock(request);
-			request.getSession().setAttribute("cart", null);
-			bean.writeOrder(); %> <!-- adds the order to the database, decrements the stock for every item in the basket and then empties the cart so that another can be created. Following this the order is written to a text file -->
+		<% 	bean.addOrderToDatabase(request); //Send the order to the database
+			bean.decrementStock(request); //Decrement the quantity of each item bought that's left in stock
+			request.getSession().setAttribute("cart", null); //Reset the contents of the cart
+			//bean.writeOrder(); //Write the contents of the order to a .txt file%> 
 			<h1 align="center">
 				<br /><br />
 				<i class="fa fa-check-circle-o fa-5x"></i><br /><br />

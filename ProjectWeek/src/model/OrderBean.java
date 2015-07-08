@@ -14,6 +14,8 @@ import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
 
+import service.DatabaseConnectorService;
+import service.DatabaseQueryingService;
 import service.OrderService;
 import domain.Basket;
 import dto.Customer;
@@ -110,26 +112,37 @@ public class OrderBean implements Serializable{
 	//
 	public void writeOrder(){
 		
+		String query;
+		
+		DatabaseQueryingService dqs = new DatabaseQueryingService();
+		ResultSet res;
+		
+		dqs.openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
+		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime");
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("select * from `order` where id = '" + orderId + "';");
+			
+			query = String.valueOf("select * from `order` where id = '" + orderId + "';");
+			
+			res = dqs.queryDatabase(query);
+			
 			String text = "";
 			if(res.next()) {
 				
-				text += "Order ID : " + res.getString("id") + " Customer ID : " + res.getString("customerId") + " Shipping cost : " + res.getString("shippingCost") + " Delivery Instructions : " + res.getString("specialDeliveryInstructions") + "\n";
+				text += "Order ID : " + res.getString("id") 
+						+ " Customer ID : " + res.getString("customerId") 
+						+ " Shipping cost : " + res.getString("shippingCost") 
+						+ " Delivery Instructions : " + res.getString("specialDeliveryInstructions") + "\n";
 				
 			}
 			PrintWriter out;
 			try {
 				out = new PrintWriter(new BufferedWriter(new FileWriter("C:/lib/OrderDetails.txt", true)));
 				out.println(text);
-				out.close();
-			} catch (IOException e) {e.printStackTrace();}
-		} catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); }
+				out.close();		res.close();
+			} catch (IOException e) {System.out.println(e.getMessage());}
+		} catch (SQLException e){ System.out.println(e.getMessage());}
+		
+		dqs.closeConnection();		
 		
 	}
 	//

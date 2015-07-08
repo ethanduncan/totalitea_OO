@@ -48,7 +48,7 @@ public class SearchBean implements Serializable {
 										+ "<input type = 'hidden' name = 'basketPrice' value = '" + price + "'>"
 								+ "</td>"
 								+ "<td>"
-								+ "<button class='btn btn-success' type ='submit' style='width: 60px; height: 60px; margin-left: 20px;'><i class='fa fa-cart-plus'></i></button>"
+								+ "<button class='btn btn-success' type ='submit' style='width: 60px; height: 60px; margin-left: 20px;'><i class='fa fa-cart-plus fa-2x'></i></button>"
 							+ "</td>"
 						+ "</form>"
 								+ "<form action='ControllingServlet' method='GET'>"
