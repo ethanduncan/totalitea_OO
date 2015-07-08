@@ -20,7 +20,7 @@ public class DatabaseQueryingService extends DatabaseConnectorService{
 	public ResultSet queryDatabase(String query) {
 		
 		try {
-			stat = con.createStatement();
+			stat = this.con.createStatement();
 			this.res = stat.executeQuery(query);
 		} catch (SQLException e) {
 			e.getMessage();
