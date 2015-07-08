@@ -20,8 +20,8 @@ public class DatabaseQueryingService extends DatabaseConnectorService{
 	public ResultSet queryDatabase(String query) {
 		
 		try {
-			stat = this.con.createStatement();
-			this.res = stat.executeQuery(query);
+			this.stat = this.con.createStatement();
+			this.res = this.stat.executeQuery(query);
 		} catch (SQLException e) {
 			e.getMessage();
 		}
@@ -35,6 +35,7 @@ public class DatabaseQueryingService extends DatabaseConnectorService{
 		try {
 			this.stat.close();
 			this.con.close();
+			this.res.close();
 		} catch (SQLException e) {
 			e.getMessage();
 		}
