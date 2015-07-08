@@ -18,7 +18,7 @@
 		<% 	bean.addOrderToDatabase(request); //Send the order to the database
 			bean.decrementStock(request); //Decrement the quantity of each item bought that's left in stock
 			request.getSession().setAttribute("cart", null); //Reset the contents of the cart
-			//bean.writeOrder(); //Write the contents of the order to a .txt file%> 
+			bean.writeOrder(); //Write the contents of the order to a .txt file%> 
 			<h1 align="center">
 				<br /><br />
 				<i class="fa fa-check-circle-o fa-5x"></i><br /><br />
