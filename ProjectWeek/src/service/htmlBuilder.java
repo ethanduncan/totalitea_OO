@@ -36,6 +36,22 @@ public class htmlBuilder {
 			 			+ "</div><!-- /div -->"
 		 			+ "</div><!-- /.container-fluid -->"
 		 		+ "</nav>";
+	
+	String adminBody = "<nav class='navbar navbar-inverse'>"
+						  + "<div class='container-fluid'>"
+						    + "<div class='navbar-header'>"
+						      + "<a class='navbar-brand' href='#'>Admin Control Panel</a>"
+						    + "</div>"
+						    + "<div>"
+						      + "<ul class='nav navbar-nav'>"
+						        + "<li class='active'><a href='Overview.jsp'>Home</a></li>"
+						        + "<li><a href='addItem.jsp'>Add Item</a></li>"
+						        + "<li><a href='StockReport.jsp'>Stock Report</a></li>" 
+						        + "<li><a href='AdminLogin.jsp'>Logout[admin]</a></li>" 
+						      + "</ul>"
+						    + "</div>"
+						  + "</div>"
+						+ "</nav>";
 
 	public String getHeader() {
 		return header;
@@ -43,6 +59,10 @@ public class htmlBuilder {
 
 	public String getBody() {
 		return body;
+	}
+
+	public String getAdminBody() {
+		return adminBody;
 	}
 
 	public htmlBuilder() {

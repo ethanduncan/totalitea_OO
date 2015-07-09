@@ -7,9 +7,9 @@
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Add item</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<%@ page import = "service.htmlBuilder" %>
+		<% htmlBuilder hb = new htmlBuilder(); %>
+		<%= hb.getHeader() %>
 		
 		<jsp:useBean id="beanUse" class = "model.AddItemBean" scope = "page"/>
 	
@@ -17,21 +17,7 @@
 	
 	<body>
 	<!--  Navigation bar -->
-	<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Admin Control Panel</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="Overview.jsp">Home</a></li>
-        <li><a href="addItem.jsp">Add Item</a></li>
-        <li><a href="StockReport.jsp">Stock Report</a></li> 
-        <li><a href="AdminLogin.jsp">Logout[admin]</a></li> 
-      </ul>
-    </div>
-  </div>
-</nav>
+	<%= hb.getAdminBody() %>
 	
 		<%String catAdd = (String) request.getSession().getAttribute("catAdd"); %> <!-- retrieves the searchText and searchType variables from the session data -->
 		<%String descAdd = (String) request.getSession().getAttribute("descAdd"); %>

@@ -5,9 +5,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Error</title>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<%@ page import = "service.htmlBuilder" %>
+		<% htmlBuilder hb = new htmlBuilder(); %>
+		<%= hb.getHeader() %>
 	</head>
 	<body>
 		<h1 align="center"><br /><br /><i class="fa fa-times-circle fa-5x style="color:red""></i></h1>

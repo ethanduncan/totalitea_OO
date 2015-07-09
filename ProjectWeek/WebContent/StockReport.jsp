@@ -6,29 +6,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>TotaliTEA - StockReport</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <%@ page import = "service.htmlBuilder" %>
+		<% htmlBuilder hb = new htmlBuilder(); %>
+		<%= hb.getHeader() %>
 	<jsp:useBean id="beanUse" class = "model.StockReportBean" scope = "page"/>
 	
 	</head>
 	<body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Admin Control Panel</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="Overview.jsp">Home</a></li>
-        <li><a href="addItem.jsp">Add Item</a></li>
-        <li><a href="StockReport.jsp">Stock Report</a></li> 
-        <li><a href="AdminLogin.jsp">Logout[admin]</a></li> 
-      </ul>
-    </div>
-  </div>
-</nav>
+<%= hb.getAdminBody() %>
 <div class="alert alert-danger" role="alert">
   <a href="#" class="alert-link">Please do not update the quantity BEFORE you have reordered!</a>
 </div>
