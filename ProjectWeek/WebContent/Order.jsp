@@ -6,18 +6,16 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>TotaliTEA - Your order</title>
 		<jsp:useBean id="bean" class="model.OrderBean" scope="page"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	    <link rel="stylesheet" href="./css/normalize.css" type="text/css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	    <link href="http://fonts.googleapis.com/css?family=Fira+Sans:400,300" rel="stylesheet" type="text/css">
-	    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+		<%@ page import = "service.htmlBuilder" %>
+		<% htmlBuilder hb = new htmlBuilder(); %>
+		<%= hb.getHeader() %>
 		<%@ page import="domain.Basket" %>
 		<%@ page import="service.OrderService" %><!-- imports all the pages that will be used by the scriptlets on this page -->
 		<%@ page import="dto.Customer" %>
 	</head>
 	<body class="content">
+	
+		<%= hb.getBody() %>
 	
 		<div class="container">
 	

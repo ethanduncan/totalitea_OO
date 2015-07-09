@@ -5,17 +5,16 @@
 <html>
 <head>
     <title>TotaliTEA -- Dummy -- Search</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="./css/styles.css">    
+    <%@ page import = "service.htmlBuilder" %>
+		<% htmlBuilder hb = new htmlBuilder(); %>
+		<%= hb.getHeader() %>    
     <jsp:useBean id="bean" class="model.LoginBean" scope="session"/>
     <%@ page import="dto.Customer" %>
 </head>
 
 <body class="landing">
+
+	<%= hb.getBody() %>
 
 	<div class="container">
 		

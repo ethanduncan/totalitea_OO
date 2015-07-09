@@ -39,7 +39,7 @@ public class SearchBean implements Serializable {
 				itemWeight = res.getString("itemWeight");
 				price = res.getString("price");
 				quantityInStock = res.getString("quantityInStock");
-				average = res.getString("average_rating");
+				average = res.getString("average_ratings");
 				
 				items += "<tr>"
 							+ "<form action = 'BasketController' method = 'get'><td>" + description + "</td>"

@@ -2,20 +2,15 @@ package service;
 
 public class htmlBuilder {
 	
-	public String headerCreator(){
-		
-		return "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>"
+	String header = "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>"
 				+ "<link rel='stylesheet' type='text/css' href='./css/normalize.css'>"
+				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>"
 				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>"
 				+ "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>"
 				+ "<link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300' rel='stylesheet' type='text/css'>"
 				+ "<link rel='stylesheet' href='./css/styles.css'>";
 		
-	}
-	
-	public String bodyCreator() {
-		
-		return "<nav class='navbar navbar-inverse'>"
+	String body = "<nav class='navbar navbar-inverse'>"
 		 			+ "<div class='container-fluid'>"
 			 			+ "<div class='navbar-header'>"
 			 				+ "<a class='navbar-brand' href='#'><img src='./css/img/brand.png' alt='Logo' /></a>"
@@ -41,7 +36,19 @@ public class htmlBuilder {
 			 			+ "</div><!-- /div -->"
 		 			+ "</div><!-- /.container-fluid -->"
 		 		+ "</nav>";
-		
+
+	public String getHeader() {
+		return header;
 	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public htmlBuilder() {
+		super();
+	}
+		
+	
 
 }
