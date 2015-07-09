@@ -7,10 +7,10 @@ import java.sql.Statement;
 
 public class DatabaseQueryingService extends DatabaseConnectorService{
 	
-	DatabaseConnectorService dbc = new DatabaseConnectorService();
+
 	
 	private Statement stat;
-	private Connection con = dbc.openConnection("totalitea", "root", "teatime");
+	private Connection con = openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
 	private ResultSet res;
 	
 	public DatabaseQueryingService() {
