@@ -8,7 +8,7 @@ public class DatabaseAlterationService extends DatabaseConnectorService {
 	
 
 	private Statement stat;
-	private Connection con = openConnection("totalitea", "root", "teatime");
+	private Connection con = openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
 	
 	public DatabaseAlterationService() {
 		//Zero-args constructor

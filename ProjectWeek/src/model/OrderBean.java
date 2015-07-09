@@ -42,9 +42,7 @@ public class OrderBean implements Serializable{
 		String order = "";
 		
 		Customer customer = (Customer)req.getSession().getAttribute("customer");
-		
 		Basket basket = (Basket)req.getSession().getAttribute("cart");
-		
 		
 		if (orderId != null) {
 			order = basket.displayBasket() 
@@ -62,7 +60,6 @@ public class OrderBean implements Serializable{
 	public String addOrderToDatabase(HttpServletRequest req){
 		
 		ResultSet res;
-		dqs.openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
 		try{
 			
 			String query = String.valueOf("select max(id)  as 'maxvalue' from `order`");
@@ -118,7 +115,6 @@ public class OrderBean implements Serializable{
 
 		ResultSet res;
 
-		dqs.openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
 		
 		try {
 			
@@ -152,8 +148,6 @@ public class OrderBean implements Serializable{
 	public void decrementStock(HttpServletRequest req){
 		
 		Basket basket = (Basket) req.getSession().getAttribute("cart");
-		das.openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
-		dqs.openConnection("jdbc:mysql://localhost:3306/totalitea", "root", "teatime");
 		try{
 
 			int quantity;
@@ -164,7 +158,6 @@ public class OrderBean implements Serializable{
 				ResultSet res1 = dqs.queryDatabase("select quantityInStock from `item` where id="+itemID);
 				if(res1.next()){
 					quantity = res1.getInt("quantityInStock") - 1;
-					
 					das.updateDatabase("item", "quantityInStock", quantity, "id", item.getId().toString());
 				}
 			}
