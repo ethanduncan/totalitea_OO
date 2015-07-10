@@ -19,8 +19,8 @@
 	
 		<div class="container">
 	
-			<%=		bean.orderToString(request) %> <!--  passes the request forwarded to this jsp to the orderToString method. Returns the string to the page. The string has html tags contained within it so there is no formatting here -->
-			<%		Basket basket = (Basket) request.getSession().getAttribute("cart"); %>
+			<span style="display:none;"><%=		bean.orderToString(request) %> <!--  passes the request forwarded to this jsp to the orderToString method. Returns the string to the page. The string has html tags contained within it so there is no formatting here -->
+			<%		Basket basket = (Basket) request.getSession().getAttribute("cart"); %></span>
 		
 			<h1 align="center">Here's your order details</h1>
 			<table class="table table-striped table-hover">

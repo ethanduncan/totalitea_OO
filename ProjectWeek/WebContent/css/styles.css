@@ -4,16 +4,6 @@
     bottom: 5px;
 }
 
-form {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 17.5%;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.2);
-}
-
 a {
     color: rgb(0,155,255);
 }
@@ -25,18 +15,9 @@ input {
     text-align: center;
 }
 
-input#search {
-    font-size: 20pt;
-    height: 50px;
-    width: 80%;
-}
-
-button#search {
-	width: 150px;
-	height: 50px;
-	font-size: 16pt;
-	font-weight: 400;
-	margin-left: 42.5%;
+.text {
+	width: 97%;
+	left: 1.5%;
 }
 
 .btn.btn-success {
@@ -91,13 +72,9 @@ input#constSearch {
 }
 
 form.navbar-form {
-    width: auto%;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 7px;
-    padding: 0px;
-    border-radius: 0px;
-    background-color: rgba(0,0,0,0);
 }
 
 .btn.btn-success#constBtn {
