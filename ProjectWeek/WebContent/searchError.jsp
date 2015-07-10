@@ -29,12 +29,12 @@
     		<span style="font-size:48pt;">Oops</span>
     	</h1>
     	<h3 align="center">
-    		Something went wrong while processing your request. <br />
-    		Please try again, making sure your information is correct.
+    		Something went wrong while processing your search request. <br />
+    		Please try again, making sure your input information is correct.
     	</h3>
-    	<a href="login.jsp">
+    	<a href="search.jsp">
     		<button class="btn btn-info" style="margin-left: 37.5%; margin-right: auto; width: 25%; height: 50px; font-size: 16pt; font-weight: 400;">
-    			Return to login screen
+    			Return to search
     		</button>
     	</a>
     </div><!-- /.container -->
