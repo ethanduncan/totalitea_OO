@@ -7,9 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import service.DatabaseQueryingService;
 import dto.Customer;
 
 public class LoginBean implements Serializable {
+	
+	DatabaseQueryingService dqs = new DatabaseQueryingService();
 
 	/*
 	 * 
@@ -34,12 +37,8 @@ public class LoginBean implements Serializable {
 
 		try{
 			
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime");
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("Select * from customer where username = '" 
-					+ username + "' and password = '" + password +"'");
+			String query = "Select * from customer where username = '" + username + "' and password = '" + password +"'";
+			ResultSet res = dqs.queryDatabase(query);
 			
 			if(res.next()){
 				
@@ -55,7 +54,6 @@ public class LoginBean implements Serializable {
 			
 		}
 		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); }
 		
 		return returnMe;
 	}
@@ -68,12 +66,8 @@ public class LoginBean implements Serializable {
 		
 		try{
 			
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime");
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("Select * from customer where username = '" 
-					+ username + "' and password = '" + password +"'");
+			String query = "Select * from customer where username = '" + username + "' and password = '" + password +"'";
+			ResultSet res = dqs.queryDatabase(query);
 			
 			if(res.next()){
 				
@@ -110,8 +104,6 @@ public class LoginBean implements Serializable {
 			}
 		}
 		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); }
-		
 		
 		return null;
 		

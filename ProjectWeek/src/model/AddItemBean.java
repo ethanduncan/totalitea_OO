@@ -7,19 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import service.DatabaseQueryingService;
+
 public class AddItemBean implements Serializable {
+	
+	DatabaseQueryingService dqs = new DatabaseQueryingService();
 
 	public void adding(String category, String description, String itemWeight, String price, String quantity) {
 
 		String iditem = "";
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/totalitea", "root", "teatime"); // connects to local server
-			Statement stat = con.createStatement();
-			
-			ResultSet res1 = stat.executeQuery("select max(id) as highest from item;"); //selects the highest value in the id column on the item table and returns it in a column named highest
+			String query = "select max(id) as highest from item;"; //selects the highest value in the id column on the item table and returns it in a column named highest
+			ResultSet res1 = dqs.queryDatabase(query);
 			
 			if (res1.next()) {
 				
@@ -27,8 +27,14 @@ public class AddItemBean implements Serializable {
 				iditem += temporary;
 				
 			}
-			
-			int res = stat.executeUpdate("insert into item (id, category, description, itemWeight, price, quantityInStock) values ('"
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/totalitea", "root", "teatime"); // connects
+																					// to
+																					// local
+																					// server
+			Statement stat = con.createStatement();
+			stat.executeUpdate("insert into item (id, category, description, itemWeight, price, quantityInStock) values ('"
 							+ iditem
 							+ "', '"
 							+ category

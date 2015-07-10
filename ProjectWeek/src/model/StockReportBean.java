@@ -7,7 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import service.DatabaseAlterationService;
+import service.DatabaseQueryingService;
+
 public class StockReportBean implements Serializable{
+	
+	DatabaseQueryingService dqs = new DatabaseQueryingService();
+	DatabaseAlterationService das = new DatabaseAlterationService();
 
 	private String id = "";
 	private String category = "";
@@ -19,11 +25,8 @@ public class StockReportBean implements Serializable{
 		
 		
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime"); //connects to local server
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("Select * from item"); //selects all items within the item table
+			String query = "Select * from item";
+			ResultSet res = dqs.queryDatabase(query);
 			
 			while(res.next()){
 				
@@ -45,24 +48,14 @@ public class StockReportBean implements Serializable{
 			}
 			
 		}
-		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); } //catches exceptions
+		catch (SQLException exception){ System.out.println(exception.getMessage());} //catches exceptions
 		return items;
 	}
 	
 	public void updateItemTotal(String updateID, String updateTotal) {
 		
-		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-														"root", "teatime"); //connects to local server
-		Statement stat = con.createStatement(); 
-		int res = stat.executeUpdate("update item set quantityInStock = '" + updateTotal + "' where id = '" + updateID + "';");
-		//executes an update query to set the quantity in stock of an item the the amount given to the method where the item has an id matching the one given to the method.
+		das.updateDatabase("item", "quantityInStock", updateTotal, "id", updateID);
 		
-		} 
-		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); }
 	}
 }
 

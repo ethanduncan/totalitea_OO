@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import service.DatabaseQueryingService;
 import dto.Customer;
 
 public class ACPLoginBean implements Serializable {
-
+	
+	DatabaseQueryingService dqs = new DatabaseQueryingService();
 	
 	public boolean LOGIN(String aLogin, String aPass){
 		
@@ -19,12 +21,8 @@ public class ACPLoginBean implements Serializable {
 		System.out.println("Gets to here");
 		try{
 			
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime");
-			Statement stat = con.createStatement();
-			ResultSet res = stat.executeQuery("Select * from admin where username = '" 
-					+ aLogin + "' and password = '" + aPass +"'");
+			String query = "Select * from admin where username = '" + aLogin + "' and password = '" + aPass +"'";
+			ResultSet res = dqs.queryDatabase(query);
 			
 			if(res.next()){
 				
@@ -43,7 +41,6 @@ public class ACPLoginBean implements Serializable {
 			
 		}
 		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); }
 		
 		return returnMe;
 	}

@@ -7,7 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import service.DatabaseQueryingService;
+
 public class SearchBean implements Serializable {
+	
+	DatabaseQueryingService dqs = new DatabaseQueryingService();
 
 	private String id = "";
 	private String category = "";
@@ -21,15 +25,24 @@ public class SearchBean implements Serializable {
 	public String getItems(String searchText, String searchType){
 		
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/totalitea",
-															"root", "teatime"); //connects to local server
-			Statement stat = con.createStatement();ResultSet res = null;
+			ResultSet res = null;
+			String query = "";
 			if (searchType.equals("category")){
-				res = stat.executeQuery("Select * from item where category like \'%" + searchText + "%\'");
+				
+				query = String.valueOf("Select * from item where category like \'%" + searchText + "%\'");
+				res = dqs.queryDatabase(query);
+				
 			} //queries category column for anything matching the search text
 			else if (searchType.equals("name")){
-				res = stat.executeQuery("Select * from item where description like \'%" + searchText + "%\'");
+				
+				query = String.valueOf("Select * from item where description like \'%" + searchText + "%\'");
+				res = dqs.queryDatabase(query);
+				
+			}
+			if (!res.next()){
+				
+				return "No results found, please search again.";
+				
 			}
 			while(res.next()){
 				
@@ -82,7 +95,6 @@ public class SearchBean implements Serializable {
 			
 		}
 		catch (SQLException exception){ System.out.println(exception.getMessage());}
-		catch (ClassNotFoundException e){ e.printStackTrace(); } //catches exceptions
 	
 		return "Error";//if searches did not work returns error text
 }
