@@ -49,7 +49,7 @@
 			<form action="ControllingServlet" method="GET" style="background-color: rgba(0,0,0,0); margin-top: 0px;">
 				<input type="hidden" name="page" value="6" />
 			    <input type="text" placeholder="Special Delivery instructions, e.g. 'Leave it in the porch and close the door'" name="deliveryInstructions" class="form-control"/> <br />
-			    <button type="submit" class="btn btn-success">Submit</button><!-- input to allow for the user to include and special delivery instructions they may have -->
+			    <button type="submit" class="btn btn-success" style="margin-left: 45%;">Submit</button><!-- input to allow for the user to include and special delivery instructions they may have -->
 		    </form>
 		</div>
 	</body>

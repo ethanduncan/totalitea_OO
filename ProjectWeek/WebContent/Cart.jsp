@@ -22,8 +22,8 @@
                 <tr>
                     <th>Item ID</th>
     				<th>Item name</th> <!-- Creates table and a row for column titles -->
+    				<th>Item weight</th>
     				<th>Item price</th>
-    				<th>Stock</th>
                 </tr>
             </thead>
             <tbody>

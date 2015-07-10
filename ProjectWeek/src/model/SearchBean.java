@@ -41,7 +41,7 @@ public class SearchBean implements Serializable {
 			}
 			if (!res.next()){
 				
-				return "No results found, please search again.";
+				return "<h1 align='center' style='font-size: 55pt;'><br />No results found <br />Please search for something else.<br /><br /><br /><br /><br /><br /></h1>";
 				
 			}
 			while(res.next()){

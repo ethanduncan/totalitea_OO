@@ -22,7 +22,11 @@ public class DatabaseAlterationService extends DatabaseConnectorService {
 		try {
 			
 			this.stat = this.con.createStatement();
-			res = this.stat.executeUpdate("UPDATE "+table+" SET "+value+"="+newValue+" WHERE "+column+"="+columnValue);
+			res = this.stat.executeUpdate(
+					"UPDATE "+table
+						+" SET "+column+"="+columnValue
+						+" WHERE "+value+"="+newValue
+			);
 			
 			if(res==1){
 				status = true;

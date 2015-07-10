@@ -13,7 +13,6 @@
 </head>
 <body>
 <%= hb.getAdminBody() %>
-<body>
 		<h1>Updating Quantity!</h1>
 		<%String id = (String) request.getSession().getAttribute("updateID");
 		  String newTotal = (String) request.getSession().getAttribute("updateTotal");
