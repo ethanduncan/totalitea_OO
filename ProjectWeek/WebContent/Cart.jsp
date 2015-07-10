@@ -39,10 +39,10 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
                 <br /><br />
-                <a href="./search.jsp" style="display: inline-block; position:absolute; top:20%; left:15%;">
-                	<button class="btn btn-default" type="submit" style="margin-right: 0px; ">Continue shopping</button>
-                </a>
-                <form action="Order.jsp" method="post" style="background-color: rgba(0,0,0,0); display: inline-block; position: absolute; top: 20%; left: 55%;">
+                <form action="Order.jsp" method="post" style="background-color: rgba(0,0,0,0); display: inline-block; position: absolute; top: 20%;">
+                	 <a href="./search.jsp">
+	                	<button class="btn btn-default" type="submit" style="margin-right: 0px; ">Continue shopping</button>
+	                </a>
                 	<button class="btn btn-success" id="checkout" type="submit" style="margin-right: 0px;">Confirm and buy</button>
                 </form>
             </div><!-- /.col-lg-4 -->

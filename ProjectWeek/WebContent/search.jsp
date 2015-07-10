@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>TotaliTEA -- Dummy -- Search</title>
+    <title>TotaliTEA -- Search</title>
     <%@ page import = "service.htmlBuilder" %>
 		<% htmlBuilder hb = new htmlBuilder(); %>
 		<%= hb.getHeader() %>    
@@ -13,8 +13,6 @@
 </head>
 
 <body class="landing">
-
-	<%= hb.getBody() %>
 
 	<div class="container">
 		
