@@ -15,8 +15,7 @@ public class CustomerCountBean {
 try{
 			
 			ResultSet res = dqs.queryDatabase("SELECT id COUNT  FROM customer");
-			
-			   {
+			if(res.next()){
 				    count = res.getInt("COUNT");
 				    return count;
 			   }
