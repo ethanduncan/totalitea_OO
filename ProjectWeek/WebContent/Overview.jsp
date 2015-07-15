@@ -8,9 +8,26 @@
 		<%= hb.getHeader() %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Totalitea ACP</title>
+
+<jsp:useBean id="beanUse" class = "model.CustomerCountBean" scope = "page"/>
+
 </head>
 <body>
-<%= hb.getAdminBody() %>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Admin Control Panel</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="Overview.jsp">Home</a></li>
+        <li><a href="addItem.jsp">Add Item</a></li>
+        <li><a href="StockReport.jsp">Stock Report</a></li> 
+        <li><a href="AdminLogin.jsp">Logout[admin]</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="alert alert-success" role="alert">
   <a href="#" class="alert-link">You have successfully connected to the ACP!</a>
 </div>
@@ -20,7 +37,8 @@
         <h3 class="panel-title">Customers Registered</h3>
       </div>
       <div class="panel-body">
-        Panel content
+       <%=beanUse.Customers()%>
+
       </div>
     </div>
     <div class="panel panel-success">
