@@ -2,7 +2,7 @@
 
 ##Team members
 
-Ethan Duncan-Stewart,  Matt Hoy,  Max Smith(NEVERMIND HE DIDNT DO ANYTHING),  Olly John  &  Zubair Fazal
+Ethan Duncan-Stewart,  Matt Hoy,  Max Smith,  Olly John  &  Zubair Fazal
 
 ##Changelog
 ###6/7/15
